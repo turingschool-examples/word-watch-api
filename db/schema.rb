@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731213448) do
+ActiveRecord::Schema.define(version: 20170801161732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
 
   create_table "words", force: :cascade do |t|
-    t.string "value"
+    t.citext "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

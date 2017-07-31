@@ -1,6 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "Word resource API" do
+  xit "look into citext" do
+  end
+
   describe "POST /api/v1/words" do
     describe "given good data" do
       let(:data) { { word: { value: "hickory" } } }
