@@ -1,7 +1,5 @@
 # Word Watch API
 
----
-
 You can do two things here:
 
 |Verb|Path|Body|
