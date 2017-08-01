@@ -19,8 +19,8 @@ RSpec.describe "Top word resource API" do
 
       get api_v1_top_word_path
       
-      word = JSON.parse(response.body, symbolize_names: true)
-      expect(word[:value]).to eq "mike"
+      word = JSON.parse(response.body)
+      expect(word["word"]).to eq ({ "mike" => 26})
     end
   end
 end

@@ -27,11 +27,11 @@ RSpec.describe Word, type: :model do
           end
         end
 
-        expect(Word.top).to eq "mike"
+        expect(Word.top).to eq ({ "mike" => 16 })
       end
 
       it "returns an empty string if the db is empty" do
-        expect(Word.top).to eq ""
+        expect(Word.top).to eq ({ "" => 0 })
       end
     end
   end

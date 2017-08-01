@@ -7,7 +7,8 @@ GET the most used word to date.
 
 |Verb|Path|Body|Response|
 |---|---|---|---|
-|`GET`|`/api/v1/top_word`||`"{\"value\":\"Mike\"}"`|
+|`GET`|`/api/v1/top_word`||`"{\"word\":{\"sample\":26}}"`|
+||||where `26` is the frequency of `sample` in the database|
 |`POST`|`/api/v1/words`|`{ word: { value: "sample" } }`|`{ message: "sample added!" }`|
 
 *Note*: the word values are stored as `citext` types, so "Chair", "ChAiR", and
@@ -17,7 +18,8 @@ GET the most used word to date.
 
 ```shell
 bundle install
-rake db:{create,migrate}
+rake db:{create,migrate,seed}
 rspec
 rails s
 ```
+

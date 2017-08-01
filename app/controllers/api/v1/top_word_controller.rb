@@ -1,6 +1,6 @@
 class Api::V1::TopWordController < ApplicationController
   def show
-    render json: { value: Word.top }
+    render json: { word: Word.top }
   end
 end
 
