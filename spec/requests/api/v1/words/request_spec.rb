@@ -1,9 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "Word resource API" do
-  xit "look into citext" do
-  end
-
   describe "POST /api/v1/words" do
     describe "given good data" do
       let(:data) { { word: { value: "hickory" } } }
@@ -12,9 +9,11 @@ RSpec.describe "Word resource API" do
         expect(Word.count).to eq 0
 
         post api_v1_words_path, params: data
+        message = JSON.parse(response.body, symbolize_names: true)[:message]
 
         expect(response).to be_success
         expect(response.status).to eq 201
+        expect(message).to eq "hickory added!"
       end
 
       it "adds a word to the database" do

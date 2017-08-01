@@ -7,6 +7,7 @@ class Word < ApplicationRecord
       .group(:value)
       .order("word_count DESC")
       .first
-      .value rescue ""
+      .value
+      .downcase rescue ""
   end
 end

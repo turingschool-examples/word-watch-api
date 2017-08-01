@@ -9,7 +9,7 @@ RSpec.describe "Top word resource API" do
       expect(response.status).to eq 200
     end
 
-    it "returns the word with the highest count" do
+    it "returns the word downcased with the highest count" do
       words = %w(Mike ol hickory ham mike)
       words.each.with_index do |word, index|
         ((index + 1) ** 2).times do
