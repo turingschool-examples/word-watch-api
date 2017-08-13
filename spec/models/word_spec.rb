@@ -34,6 +34,36 @@ RSpec.describe Word, type: :model do
         expect(Word.top).to eq ({ "" => 0 })
       end
     end
+
+    describe ".check_reset" do
+      context "with < 1000 db records" do
+        it "returns false and does nothing" do
+          create_list(:word, 10, value: "something")
+          create_list(:word, 989, value: "else")
+
+          expect(Word.count).to eq 999
+
+          output = Word.check_reset 
+
+          expect(output).to be false
+          expect(Word.count).to eq 999
+        end
+      end
+
+      context "with >= 1000 db records" do
+        it "returns true and leaves only the word with the highest count in the database" do
+          create_list(:word, 10, value: "something")
+          create_list(:word, 990, value: "else")
+          expect(Word.count).to eq 1000
+
+          output = Word.check_reset 
+
+          expect(output).to be true
+          expect(Word.count).to eq 1
+          expect(Word.first.value).to eq "else"
+        end
+      end
+    end
   end
 end
 

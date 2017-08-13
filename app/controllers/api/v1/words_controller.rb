@@ -1,6 +1,7 @@
 class Api::V1::WordsController < ApplicationController
   def create
     word = Word.new(word_params)
+    Word.check_reset
     if word.save
       render json: { message: "#{word.value} added!" }, status: 201
     else

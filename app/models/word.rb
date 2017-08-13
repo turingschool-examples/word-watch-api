@@ -6,6 +6,10 @@ class Word < ApplicationRecord
     { top_word => top_word_count }
   end
 
+  def self.check_reset
+    database_actions[Word.count >= 1000].call()
+  end
+
   private
 
   def self.top_word
@@ -20,5 +24,20 @@ class Word < ApplicationRecord
   def self.top_word_count
     return 0 if top_word == ""
     where(value: top_word).count
+  end
+
+  def self.database_actions
+    {
+      false => -> { false },
+      true  => reset
+    }
+  end
+
+  def self.reset
+    -> do
+      word = find_by(value: top_word) 
+      where.not(id: word.id).destroy_all
+      true
+    end
   end
 end
