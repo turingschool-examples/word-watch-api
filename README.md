@@ -8,7 +8,7 @@ GET the most used word to date.
 |Verb|Path|Body|Response|
 |---|---|---|---|
 |`GET`|`/api/v1/top_word`||`"{\"word\":{\"sample\":26}}"`*|
-|`POST`|`/api/v1/words`|`{ word: { value: "sample" } }`|`{ message: "sample added!" }`|
+|`POST`|`/api/v1/words`|`{ "word": { "value": "sample" } }`|`{ message: "sample added!" }`|
 
 * Where `26` is the frequency of `sample` in the database.
 
