@@ -7,7 +7,7 @@ end
 
 gem 'rails', '~> 5.1.2'
 gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 5.6'
 gem 'faker'
 gem 'tzinfo'
 
